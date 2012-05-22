@@ -1,3 +1,5 @@
+require "mini_magick"
+
 class Thumbnails
   def call(env)
     image = MiniMagick::Image.open("../image.jpg")
