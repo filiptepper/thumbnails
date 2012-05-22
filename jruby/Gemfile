@@ -1,0 +1,7 @@
+source :rubygems
+
+gem "image_voodoo", :require => false
+gem "mini_magick", :require => false
+
+gem "rack"
+gem "puma", :require => false
