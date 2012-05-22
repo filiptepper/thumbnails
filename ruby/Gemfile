@@ -1,0 +1,9 @@
+source :rubygems
+
+gem "dragonfly", :require => false
+gem "mini_magick", :require => false
+
+gem "eventmachine", :require => false
+gem "eventmachine_httpserver", :require => false
+gem "puma", :require => false
+gem "unicorn", :require => false
