@@ -1,0 +1,6 @@
+source :rubygems
+
+gem "mini_magick", :require => false
+
+gem "rack"
+gem "puma", :require => false
