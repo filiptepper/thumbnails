@@ -1,6 +1,8 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    dragonfly (0.9.12)
+      rack
     image_voodoo (0.8.2)
     mini_magick (3.4)
       subexec (~> 0.2.1)
@@ -16,6 +18,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dragonfly
   image_voodoo
   mini_magick
   puma

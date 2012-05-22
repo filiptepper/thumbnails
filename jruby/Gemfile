@@ -1,5 +1,6 @@
 source :rubygems
 
+gem "dragonfly", :require => false
 gem "image_voodoo", :require => false
 gem "mini_magick", :require => false
 
