@@ -2,3 +2,5 @@
 log
 tmp
 node_modules
+go/bin
+go/pkg
