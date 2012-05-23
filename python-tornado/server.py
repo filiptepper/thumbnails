@@ -6,6 +6,7 @@ from PythonMagick import Image, Blob, Geometry
 
 class ImageHandler(tornado.web.RequestHandler):
     def get(self):
+        self.set_header("Content-Type", "image/jpeg")
         image = Image("../image.jpg")
         image.resize(Geometry(100, 100))
         blob = Blob()
