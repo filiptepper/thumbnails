@@ -6,7 +6,6 @@ import (
 	"flag"
   "io"
   "bytes"
-  "strconv"
   "os"
 )
 
@@ -20,8 +19,6 @@ func main() {
     buffer := bytes.NewBuffer(nil)
     mogrify.Resize(buffer, content, "100x100")
 
-    w.Header().Set("Content-Type", "image/jpeg")
-    w.Header().Set("Content-Length", strconv.Itoa(buffer.Len()))
     io.Copy(w, buffer)
 
     return

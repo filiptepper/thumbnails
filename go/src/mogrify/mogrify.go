@@ -16,11 +16,7 @@ func init() {
 }
 
 func Resize(out io.Writer, in io.Reader, size string) (err error) {
-	defer func() {
-		log.Printf("resizing stream to %s - %t", size, err == nil)
-	}()
-
-	cmd := exec.Command("gm", "convert", "-resize", size, "-colorspace", "RGB", "-", "-")
+	cmd := exec.Command("gm", "convert", "-size", size, "-resize", size, "-", "-")
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
 		return
@@ -37,8 +33,6 @@ func Resize(out io.Writer, in io.Reader, size string) (err error) {
 		return
 	}
 
-	// copy stream ot gm tool, close stream once done and 
-	// read the output of the tool back to the out stream
 	io.Copy(stdin, in)
 	stdin.Close()
 	io.Copy(out, stdout)
