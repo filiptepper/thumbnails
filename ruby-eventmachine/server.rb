@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "mini_magick"
+
 require "eventmachine"
 require "evma_httpserver"
 
@@ -15,12 +15,16 @@ class MyHttpServer < EM::Connection
     response = EventMachine::DelegatedHttpResponse.new(self)
 
     operation = proc do
-      image = MiniMagick::Image.open("../image.jpg")
-      image.resize "100x100"
+      command = "gm convert -size 100x100 ..//image.jpg -resize 100x100 JPG:-"
+      image = ""
+      IO.popen(command) do |result|
+        while part = result.read(1024)
+          image << part
+        end
+      end
 
       response.status = 200
-      response.content_type "image/jpeg"
-      response.content = image.to_blob
+      response.content = image
     end
 
     callback = proc do |res|
@@ -32,5 +36,5 @@ class MyHttpServer < EM::Connection
 end
 
 EM.run {
-  EM.start_server '0.0.0.0', 9292, MyHttpServer
+  EM.start_server "0.0.0.0", 9292, MyHttpServer
 }

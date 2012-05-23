@@ -1,0 +1,4 @@
+source :rubygems
+
+gem "eventmachine",            :require => false
+gem "eventmachine_httpserver", :require => false
