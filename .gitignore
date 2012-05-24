@@ -1,4 +1,5 @@
 .DS_Store
+.rbx
 log
 tmp
 node_modules
